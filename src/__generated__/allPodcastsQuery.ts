@@ -19,7 +19,7 @@ export interface allPodcastsQuery_getAllPodcasts_podcasts {
   id: number;
   title: string;
   creator: allPodcastsQuery_getAllPodcasts_podcasts_creator;
-  updatedAt: any;
+  createdAt: any;
 }
 
 export interface allPodcastsQuery_getAllPodcasts {

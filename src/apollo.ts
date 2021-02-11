@@ -6,7 +6,7 @@ export const isLoggedInVar = makeVar(Boolean(token));
 export const authTokenVar = makeVar(token);
 
 const httpLink = createHttpLink({
-    uri: "https://nuber-eats-challengee.herokuapp.com/graphql",
+    uri: "https://podcast-by-jayden.herokuapp.com/graphql",
 });
 const authLink = setContext((_, { headers }) => {
     return {
