@@ -35,6 +35,7 @@ export const AddPodcast = () => {
         if (ok && podcastId) {
             alert('Successfully created the podcast! Go to detail 👊');
             history.push(`/podcasts/${podcastId}`);
+            window.location.reload();
         }
     };
     const [createPodcast, {data: createResult, loading}] = useMutation<createPodcast, createPodcastVariables>(ADD_PODCAST, {

@@ -38,7 +38,8 @@ export const AddEpisode = () => {
         } = data;
         if (ok && episodeId){
             alert('Successfully created the episode! 👊');
-            history.push(`/podcasts/${params.id}`)
+            history.push(`/podcasts/${params.id}`);
+            window.location.reload();
         }
     }
     const [createEpisode, {data: createResult, loading}] = useMutation<createEpisode, createEpisodeVariables>(ADD_EPISODE, {

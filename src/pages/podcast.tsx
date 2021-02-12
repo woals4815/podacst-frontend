@@ -6,6 +6,8 @@ import {AddEpisode} from '../components/add-episode';
 import { useMe } from '../hooks/useMe';
 import { UserRole } from '../__generated__/globalTypes';
 import { SubscribeBtn } from '../components/subscribe';
+import { DeletePodcastBtn } from '../components/delete-podcast';
+import {DeleteEpisodeBtn} from '../components/delete-episode';
 
 export const PODCAST_QUERY = gql`
     query podcastQuery($input: Float!){
@@ -41,7 +43,7 @@ interface IPodcastParams{
 export const Podcast = () => {
     const params = useParams<IPodcastParams>();
     const {data: myData}= useMe();
-    const {data, loading, error} = useQuery<podcastQuery, podcastQueryVariables>(PODCAST_QUERY, 
+    const {data, loading, error , refetch} = useQuery<podcastQuery, podcastQueryVariables>(PODCAST_QUERY, 
         {
             variables: {
                 input: +params.id
@@ -64,15 +66,22 @@ export const Podcast = () => {
                     <span className="text-xl">There is no episode!</span>
                     {myData?.me.name === data.getPodcast.podcast.creator.name && 
                     (
-                        <AddEpisode id={params.id + ""}/>
+                        <div>
+                            <AddEpisode id={params.id}/>
+                            <DeletePodcastBtn podcastId={data.getPodcast.podcast.id} />
+                        </div>
                     )}
                 </div>
             ) : (
                     <div className="flex flex-col items-center">
                         <SubscribeBtn podcastId={+params.id} />
-                        {data.getPodcast.podcast?.episodes.map(episdoe => (
-                        <span>{episdoe.title}</span>
-                        ))}
+                        {data.getPodcast.podcast?.episodes.map(episdoe =>
+                            <div>
+                                <span>{episdoe.title}</span>
+                                <span>{episdoe.description}</span>
+                                <DeleteEpisodeBtn podcastId={+params.id} episodeId={episdoe.id}/>
+                            </div>    
+                        )}
                         {myData?.me.name === data.getPodcast.podcast?.creator.name && 
                         (
                             <AddEpisode id={params.id + ""}/>

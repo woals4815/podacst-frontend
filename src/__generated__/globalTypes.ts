@@ -30,6 +30,15 @@ export interface CreateUserInput {
   role: UserRole;
 }
 
+export interface DeleteEpisodeInput {
+  podcastId: number;
+  episodeId: number;
+}
+
+export interface DeletePodcastInput {
+  podcastId: number;
+}
+
 export interface LoginInput {
   email: string;
   password: string;
