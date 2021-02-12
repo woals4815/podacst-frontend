@@ -34,7 +34,7 @@ export const AddPodcast = () => {
         } = data;
         if (ok && podcastId) {
             alert('Successfully created the podcast! Go to detail 👊');
-            history.push(`/podcasts/${podcastId}`);
+            history.push("/");
             window.location.reload();
         }
     };
