@@ -1,6 +1,7 @@
 import { gql, useMutation } from '@apollo/client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
+import { Link } from 'react-router-dom';
 import { authTokenVar, isLoggedInVar } from '../apollo';
 import { Button } from '../components/button';
 import { FormError } from '../components/form-error';
@@ -96,6 +97,11 @@ export const Login = () => {
                     <FormError errormessage={loginResult.login.error} />
                 )}
             </form>
+            <div>
+                <Link to="/create-account">
+                    <span>Doens't have an account? Let's go to create</span>
+                </Link>
+            </div>
         </div>
     )
 }
