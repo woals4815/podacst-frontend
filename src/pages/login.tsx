@@ -42,10 +42,10 @@ export const Login = () => {
     >(LOGIN, {
         onCompleted
     });
-    const onSubmit = () => {
+    const onSubmit = async() => {
         if (!loading) {
             const {email, password} = getValues();
-            loginMutation({
+            await loginMutation({
                 variables: {
                     loginInput: {
                         email,

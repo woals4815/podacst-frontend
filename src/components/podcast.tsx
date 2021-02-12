@@ -13,9 +13,10 @@ export const Podcast: React.FC<IPodcastProps> = ({
     title,
     createdAt,
     creator
-}) => (
+}) => {
+    return (
     <Link to={`/podcasts/${id}`}>
-            <div className="flex flex-col items-center justify-center bg-indigo-800 w-56 h-56 p-2 mx-2 text-white rounded-full">
+            <div className="flex flex-col items-center justify-center bg-indigo-800 w-56 h-56 p-2 mx-2 mb-3 text-white rounded-full border-4 border-white">
                 <span className=" text-base">{title}</span>
                 <div className="flex flex-col items-center mt-10">
                     <span className="text-xs">{createdAt.split("T")[0]}</span>
@@ -23,4 +24,4 @@ export const Podcast: React.FC<IPodcastProps> = ({
                 </div>
             </div>
     </Link>
-)
+)}

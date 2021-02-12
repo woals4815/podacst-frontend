@@ -42,10 +42,10 @@ export const CreateAccount = () => {
     const [createMutation, {data: createResult, error, loading}] = useMutation<createAccount, createAccountVariables>(CREATE_ACCOUNT, {
         onCompleted
     })
-    const onSubmit = () => {
+    const onSubmit = async() => {
         if (!loading) {
             const {email, password, role, name} = getValues();
-            createMutation({
+            await createMutation({
                 variables: {
                     input: {
                         email,

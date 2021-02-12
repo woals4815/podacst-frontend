@@ -12,6 +12,17 @@ export enum UserRole {
   Host = "Host",
 }
 
+export interface CreateEpisodeInput {
+  podcastId: number;
+  title: string;
+  description: string;
+}
+
+export interface CreatePodcastInput {
+  title: string;
+  categoryName: string;
+}
+
 export interface CreateUserInput {
   email: string;
   password: string;
@@ -22,6 +33,10 @@ export interface CreateUserInput {
 export interface LoginInput {
   email: string;
   password: string;
+}
+
+export interface SearchPodcastInput {
+  query: string;
 }
 
 //==============================================================
